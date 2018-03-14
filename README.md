@@ -1,2 +1,2 @@
-# Accipiter
-Drone auto pilot system
+# LAP
+Low Altitude Platform for drone flocking
