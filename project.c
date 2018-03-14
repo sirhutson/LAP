@@ -39,21 +39,17 @@ void TIMER0A_Handler(void)
 int main()
 {
 
-uint8_t message1[2]; 
-uint8_t message2[2];
 
 
 
-//SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL| SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);  // FOR IMU
+   SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL| SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);  // FOR IMU
 
 		
-SysCtlClockSet(SYSCTL_SYSDIV_12_5| SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);   // FOR CAN
 	
 		Gpio_setup();		
 		UART_setup();
-	  CAN_Init();               // for can
-		initReceiver();           // for can 
-		//pwm_setup();            // for imu
+
+		pwm_setup();            // for imu
 		i2c_setup();
 		ADC_setup();
 		
@@ -84,29 +80,3 @@ while (1)
 //loading();
 			
 			
-//		FOR CAN - CLASS
-			loading();
-			
-			if (a >= 102)
-			{
-				lux_data();
-				IMU_data();
-				message2[0] = (accel_ypr.x/16)-1;
-				message2[1] = (uint8_t)luxdata.lux;
-				CAN_Transmit(message2,2);// transmit lux info
-				a = 0;
-				
-			}
-			if (ms_counter == 5)
-			{
-		  	process_ADC();
-				print_ADC_DATA();
-				message1[0] = ADCconvertedinfo.LEFTRIGHT;
-				message1[1] = ADCconvertedinfo.UPDOWN;
-			  CAN_Transmit(message1,1); // transmit
-				a++;
-				ms_counter = 0;
-			}
-			
-			}
-	}

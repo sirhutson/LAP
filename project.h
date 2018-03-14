@@ -47,8 +47,7 @@
 #include "../inc/tm4c123gh6pm.h"
 #include "./src/i2c_helper.h"
 #include "./src/adc_helper.h"
-#include "./src/IMU.h"
+
 #include "./src/pwm_helper.h"
 #include "./src/systick_helper.h"
-#include "./src/luxsensor.h"
-#include "./src/CAN.h"
+

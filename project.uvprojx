@@ -424,29 +424,9 @@
               <FilePath>.\src\adc_helper.c</FilePath>
             </File>
             <File>
-              <FileName>accelerometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\accelerometer.c</FilePath>
-            </File>
-            <File>
-              <FileName>magnetometer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\magnetometer.c</FilePath>
-            </File>
-            <File>
               <FileName>i2c_helper.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\i2c_helper.c</FilePath>
-            </File>
-            <File>
-              <FileName>IMU.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\IMU.c</FilePath>
-            </File>
-            <File>
-              <FileName>L3GD20.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\L3GD20.c</FilePath>
             </File>
             <File>
               <FileName>pwm_helper.c</FileName>
@@ -457,56 +437,6 @@
               <FileName>systick_helper.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\systick_helper.c</FilePath>
-            </File>
-            <File>
-              <FileName>luxsensor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\luxsensor.c</FilePath>
-            </File>
-            <File>
-              <FileName>CAN.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\CAN.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_api.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\core\src\vl53l0x_api.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_api_calibration.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\core\src\vl53l0x_api_calibration.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_api_core.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\core\src\vl53l0x_api_core.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_api_ranging.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\core\src\vl53l0x_api_ranging.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_api_strings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\core\src\vl53l0x_api_strings.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_platform.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\platform\src\vl53l0x_platform.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_platform_log.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\platform\src\vl53l0x_platform_log.c</FilePath>
-            </File>
-            <File>
-              <FileName>vl53l0x_i2c_win_serial_comms.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\platform\src\vl53l0x_i2c_win_serial_comms.c</FilePath>
             </File>
           </Files>
         </Group>
