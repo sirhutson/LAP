@@ -38,13 +38,7 @@ void TIMER0A_Handler(void)
 
 int main()
 {
-
-
-
-
    SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL| SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);  // FOR IMU
-
-		
 	
 		Gpio_setup();		
 		UART_setup();
@@ -53,9 +47,9 @@ int main()
 		i2c_setup();
 		ADC_setup();
 		
-		IMU_config_power();
-		lux_confirmation(); // only needs to be done once when power is reset
-		lux_setup();
+		//IMU_config_power();
+	//printf("initial setup is done");
+	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
 	  systick_setup();
 	  //timer0A_setup(period);
 				
@@ -79,4 +73,5 @@ while (1)
 //			
 //loading();
 			
-			
+		}		
+	}		

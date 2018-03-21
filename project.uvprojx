@@ -438,6 +438,16 @@
               <FileType>1</FileType>
               <FilePath>.\src\systick_helper.c</FilePath>
             </File>
+            <File>
+              <FileName>imu_helper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\imu_helper.h</FilePath>
+            </File>
+            <File>
+              <FileName>imu_helper.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\imu_helper.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
