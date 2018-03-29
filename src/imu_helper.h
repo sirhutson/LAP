@@ -106,9 +106,16 @@
 #define ACC_ID         0x1    // READ ONLY
 #define CHIP_ID        0x0    // READ ONLY
 
- 
-
+struct IMU_euler
+{
+        int16_t x;  //roll
+        int16_t y;  //pitch
+        int16_t z;  //heading
+};
 
 void IMU_config_power(void);
 void IMU_STATUS(void);
 void IMU_data(void);
+
+
+extern struct IMU_euler msb_lsb;

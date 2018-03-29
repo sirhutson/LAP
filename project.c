@@ -47,29 +47,30 @@ int main()
 		i2c_setup();
 		ADC_setup();
 		
-		//IMU_config_power();
-	//printf("initial setup is done");
-	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
+		IMU_config_power();
+		//printf("initial setup is done");
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
 	  systick_setup();
-	  //timer0A_setup(period);
+		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,0);
+	  timer0A_setup(period);
 				
 while (1)
 		{
 
 // FOR IMU - LAB		
 			
-//		if (ms_counter >= 5)
-//			{
-//				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,GPIO_PIN_2);
-//				IMU_data();
+		if (ms_counter >= 5)
+			{
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,GPIO_PIN_2);
+				IMU_data();
 //				IMU_STATUS();
-//				update_roll(roll);
-//				update_pitch(pitch);
-//				update_yaw(heading);
+				update_roll(msb_lsb.x);
+				update_pitch(msb_lsb.y);
+				update_yaw(msb_lsb.z);
 //				print_IMU();
-//				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,0);
-//				ms_counter = 0;
-//			}
+				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,0);
+				ms_counter = 0;
+			}
 //			
 //loading();
 			
