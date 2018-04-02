@@ -12,8 +12,8 @@
 // BNO055 Slave Address
 //*****************************************************************************
 
-#define bno_write 0x28      // proper data sheet proves this
-#define bno_read  0x29      // proper data sheet proves this
+#define bno_write 0x50      // proper data sheet proves this
+#define bno_read  0x51      // proper data sheet proves this
 
 //*****************************************************************************
 // BNO055 REGISTERS
@@ -113,9 +113,12 @@ struct IMU_euler
         int16_t z;  //heading
 };
 
+
+void MikeJones(void);
 void IMU_config_power(void);
 void IMU_STATUS(void);
 void IMU_data(void);
+void print_IMU(void);
 
 
 extern struct IMU_euler msb_lsb;

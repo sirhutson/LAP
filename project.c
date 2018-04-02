@@ -31,7 +31,7 @@ void TIMER0A_Handler(void)
 	TIMER0_ICR_R = 0x000001;  // acknowledges the timer timeout 
 	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3,GPIO_PIN_3);
 	//TIMER0_ICR_R |= (0x000001);  // acknowledges the timer timeout 
-	printf("%d ms at interrupt\n\r",ms_counter);
+	//printf("%d ms at interrupt\n\r",ms_counter);
 	a = 1;
 	GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3,0);
 }
@@ -46,20 +46,21 @@ int main()
 		pwm_setup();            // for imu
 		i2c_setup();
 		ADC_setup();
-		
+		MikeJones();
 		IMU_config_power();
-		//printf("initial setup is done");
+		printf("initial setup is done\n");
+		MikeJones();
 		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
 	  systick_setup();
 		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,0);
-	  timer0A_setup(period);
+	  //timer0A_setup(period);
 				
 while (1)
 		{
 
 // FOR IMU - LAB		
 			
-		if (ms_counter >= 5)
+		if (ms_counter >= 10)
 			{
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,GPIO_PIN_2);
 				IMU_data();
@@ -67,12 +68,12 @@ while (1)
 				update_roll(msb_lsb.x);
 				update_pitch(msb_lsb.y);
 				update_yaw(msb_lsb.z);
-//				print_IMU();
+				print_IMU();
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,0);
 				ms_counter = 0;
 			}
 //			
-//loading();
+loading(); //demonstrates ability of processor to execute other tasks while waiting for imu updates
 			
 		}		
 	}		
