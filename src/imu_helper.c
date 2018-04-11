@@ -46,7 +46,7 @@ I2C0_MCS_R = (0x03); // writing 3 means it will expect another send
 	{
 	}
 	
-	I2C0_MDR_R = (0x10); //value to write, puts bno055 in degrees and fahrenheit
+	I2C0_MDR_R = (0x90); //value to write, puts bno055 in degrees and fahrenheit android
 	I2C0_MCS_R = (0x05); //this is the run and stop to tell bus last of data was sent
 	
 	while((I2C0_MCS_R & (1<<0)) == !0) // waits until bus is no longer busy
@@ -58,14 +58,17 @@ I2C0_MCS_R = (0x03); // writing 3 means it will expect another send
 
 void IMU_data(void)
 {
-	uint8_t eph;
-	uint8_t epl;
+	int8_t eph;
+	int8_t epl;
 	
-	uint8_t ehdh;
-	uint8_t ehdl;
+	int8_t ehdh;
+	int8_t ehdl;
 	
-	uint8_t erh;
-	uint8_t erl;
+	int8_t erh;
+	int8_t erl;
+	
+	
+ 
 	
   I2C0_MSA_R = bno_write; // slave address write
 	I2C0_MDR_R = (EUL_PCH_LSB); //register to write, this is euler pitch low
@@ -147,9 +150,9 @@ void IMU_data(void)
 	ehdh = I2C0_MDR_R;
 
 	
-	msb_lsb.y = (epl|eph<<8);
-	msb_lsb.x = (erl|erh<<8);
-	msb_lsb.z = (ehdl|ehdh<<8);
+	msb_lsb.y = (epl|eph<<8)/16; //divide by 16 for degres representation
+	msb_lsb.x = (erl|erh<<8)/16;
+	msb_lsb.z = (ehdl|ehdh<<8)/16;
 	
 }
 
@@ -232,6 +235,37 @@ void MikeJones(void)
 	
 	printf(" power mode is %02x\n",power);
 	
+}
+
+
+void CALIB_STAT(void)
+{
+		int cal;
+		uint8_t x;
+		cal = 0;
+	
+	while (cal == 0) 
+{
+	I2C0_MSA_R = bno_write; // slave address write
+	I2C0_MDR_R = (CALIB_STATUS); //register to write, this is euler pitch
+	I2C0_MCS_R = (0x0B); // from idle start recieve and stop
+	while ((I2C0_MCS_R & (1<<0)) == !0)
+	{
+	}
+	I2C0_MSA_R = bno_read; 
+	I2C0_MCS_R = (0x07); // switches from transmit to receive and receives 1 byte
+	while ((I2C0_MCS_R & (1<<0)) == !0)
+	{
+	}
+	
+	x = I2C0_MDR_R;
+	printf(" cal stat is %d",x);
+		
+		if (x == 255)
+		{
+		cal = 1;
+		}
+}
 }
 // determine units ... done 
 // output format based upon pitch for clock or counter clock... left as default. 

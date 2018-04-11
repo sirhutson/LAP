@@ -119,6 +119,6 @@ void IMU_config_power(void);
 void IMU_STATUS(void);
 void IMU_data(void);
 void print_IMU(void);
-
+void CALIB_STAT(void);
 
 extern struct IMU_euler msb_lsb;

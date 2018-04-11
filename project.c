@@ -38,21 +38,23 @@ void TIMER0A_Handler(void)
 
 int main()
 {
-   SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL| SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);  // FOR IMU
+ 
+    SysCtlClockSet(SYSCTL_SYSDIV_2_5 | SYSCTL_USE_PLL| SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);  // FOR IMU
 	
 		Gpio_setup();		
 		UART_setup();
 
 		pwm_setup();            // for imu
 		i2c_setup();
-		ADC_setup();
 		MikeJones();
 		IMU_config_power();
 		printf("initial setup is done\n");
 		MikeJones();
-		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
+		//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,GPIO_PIN_1);
 	  systick_setup();
-		GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,0);
+		//GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1,0);
+
+			CALIB_STAT();
 	  //timer0A_setup(period);
 				
 while (1)
@@ -64,10 +66,10 @@ while (1)
 			{
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,GPIO_PIN_2);
 				IMU_data();
-//				IMU_STATUS();
-				update_roll(msb_lsb.x);
-				update_pitch(msb_lsb.y);
-				update_yaw(msb_lsb.z);
+
+				update_roll(msb_lsb.x/2);
+				update_pitch(msb_lsb.y/2);
+				update_yaw(msb_lsb.z/2);
 				print_IMU();
 				GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2,0);
 				ms_counter = 0;

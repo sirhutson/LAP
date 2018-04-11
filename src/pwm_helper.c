@@ -41,39 +41,21 @@ void pwm_setup()
 
 void update_roll(double x)
 {
-	if (x < 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_0,(1500 + (x/0.0022584))); // This widths set will correspond to a specific postion, PB6 
-	}
+		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_0,(1500 + (x/.18))); // This widths set will correspond to a specific postion, PB6 
+		//PWMPulseWidthSet(PWM0_BASE,PWM_OUT_0,(1500 + (x/.180))); // 90 degree change over .5m
 	
-	if (x > 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_0,(1500 - (x/0.0017976))); // This widths set will correspond to a specific postion, PB6 
-	}
 }
 	
 void update_pitch(double y)
 {
-	if (y < 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_1,(1500 + (y/0.0022584))); // This widths set will correspond to a specific postion, PB7
-	}
-	if (y > 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_1,(1500 - (y/0.0017976))); // This widths set will correspond to a specific postion, PB7
-	}
+		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_1,(1500 + (y/.18))); // This widths set will correspond to a specific postion, PB7
 }
 void update_yaw(double z)
 {
 	// Every increment for left is .1294 degrees and for right it is .103
 	// may need to flip signs based on left/right rotation
 	
-	if (z < 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_3,(1500 + (z/0.0022584))); // This widths set will correspond to a specific postion, PB5
-	}
-	if (z > 0)
-	{
-		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_3,(1500 - (z/0.0017976))); // This widths set will correspond to a specific postion, PB5
-	}
+
+		PWMPulseWidthSet(PWM0_BASE,PWM_OUT_3,(1500 + (z/.18))); // This widths set will correspond to a specific postion, PB5
+
 }
